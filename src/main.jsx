@@ -4,7 +4,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Root from "./components/Root/Root";
 import Home from "./components/Home/Home";
-import Jobs from "./components/Jobs/Jobs";
 import Statistics from "./components/Header/Statistics";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import AppliedJobs from "./components/AppliedJobs/AppliedJobs";
@@ -24,6 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/applied",
         element: <AppliedJobs></AppliedJobs>,
+        loader: () => fetch("/public/data/jobs.json"), // warning : only load the data you need. do not all the data
       },
       {
         path: "/statistics",
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/job/:id",
-        loader: () => fetch("/public/data/jobs.json"),
         element: <JobDetails></JobDetails>,
+        loader: () => fetch("/public/data/jobs.json"), // do not load all data. load only what you need
       },
     ],
   },

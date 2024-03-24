@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { MdOutlineSubtitles } from "react-icons/md";
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import { FiPhone } from "react-icons/fi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { saveJobApplication } from "../../utils/localstorage";
 
 const JobDetails = () => {
   const jobs = useLoaderData();
@@ -20,11 +23,17 @@ const JobDetails = () => {
     job_title,
     contact_information,
   } = job;
+
+  const handleApplyJob = () => {
+    saveJobApplication(idInt);
+    toast("You have applied successfully");
+  };
   return (
     <div>
       <h3 className="text-center text-3xl font-semibold mt-[120px]">
         Job Details
       </h3>
+
       <div className="grid md:grid-cols-5 gap-4 my-[40px] md:my-[80px] lg:my-[130px]">
         <div className="md:col-span-3 space-y-6">
           <p className="leading-8 font-medium">
@@ -53,7 +62,7 @@ const JobDetails = () => {
               <span className="font-bold flex items-center gap-2">
                 <AiOutlineDollarCircle className="text-xl" />
                 Salary :
-              </span>{" "}
+              </span>
               {salary}
             </p>
             <p className="flex">
@@ -90,6 +99,7 @@ const JobDetails = () => {
             </p>
           </div>
           <button
+            onClick={handleApplyJob}
             className="w-full py-2 mt-6 rounded md:py-3 bg-gradient-to-r from-[#7E90FE] to-[#9873FF] hover:bg-gradient-to-r hover:from-[#9873FF]  hover:to-[#7E90FE] font-medium
          md:text-lg text-white"
           >
@@ -97,6 +107,7 @@ const JobDetails = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

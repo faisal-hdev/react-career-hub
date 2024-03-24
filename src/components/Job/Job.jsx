@@ -45,7 +45,7 @@ const Job = ({ job }) => {
           <Link to={`/job/${id}`}>
             <button
               className="md:px-5 px-3 py-1 rounded md:py-3 bg-gradient-to-r from-[#7E90FE] to-[#9873FF] hover:bg-gradient-to-r hover:from-[#9873FF]  hover:to-[#7E90FE] text-lg font-medium
-         md:text-xl md:font-bold text-white"
+          md:font-medium text-white"
             >
               View Details
             </button>

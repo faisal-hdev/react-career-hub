@@ -6,7 +6,7 @@ const Category = ({ category }) => {
   const { logo, category_name, availability } = category;
 
   return (
-    <div className="p-10 bg-[#7E90FE0D] space-y-2 rounded">
+    <div className="p-4 md:p-10 bg-[#7b8cfb21] space-y-2 rounded shadow-md">
       <img className="p-4 bg-[#7E90FE1A] rounded" src={logo} alt="" />
       <h3 className="text-xl font-bold">{category_name}</h3>
       <p>{availability}</p>
